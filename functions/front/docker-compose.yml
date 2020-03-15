@@ -1,0 +1,36 @@
+version: '2.3'
+
+services:
+  front:
+    image: registry.gitlab.com/mypochtaweb/linkbox
+    environment:
+      VIRTUAL_HOST: mylinkbox.ru
+      LETSENCRYPT_HOST: mylinkbox.ru
+      LETSENCRYPT_EMAIL: mypochtaweb@gmail.com
+    networks:
+      - mylinkbox
+      - proxy
+
+  back:
+    image: registry.gitlab.com/mypochtaweb/backlinkbox
+    environment:
+      VIRTUAL_HOST: back.mylinkbox.ru
+      VIRTUAL_PORT: 3001
+      LETSENCRYPT_HOST: back.mylinkbox.ru
+      LETSENCRYPT_EMAIL: mypochtaweb@gmail.com
+    networks:
+      - proxy
+      - mylinkbox
+
+  mongo:
+    image: mongo
+    networks:
+      - mylinkbox
+
+networks:
+  mylinkbox:
+  proxy:
+    external: true
+
+volumes:
+  mongo_data:

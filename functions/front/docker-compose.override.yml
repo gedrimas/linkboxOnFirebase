@@ -1,0 +1,9 @@
+version: '2.3'
+
+services:
+  front:
+    build: .
+    # volumes:
+      # - ./:/app
+    ports:
+      - 80:80
