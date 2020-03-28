@@ -46,8 +46,8 @@ export function registrationOrAuthFailure(err) {
   }
 }
 
-//export const saveInintalUserState = token => fetch(`https://us-central1-mylinkbox-gedrimas.cloudfunctions.net/app/mylinks`, {
-export const saveInintalUserState = (token, initialStateSave) => fetch(`http://localhost:5000/mylinkbox-gedrimas/us-central1/app/mylinks`, {
+export const saveInintalUserState = token => fetch(`https://us-central1-mylinkbox-gedrimas.cloudfunctions.net/app/mylinks`, {
+//export const saveInintalUserState = (token, initialStateSave) => fetch(`http://localhost:5000/mylinkbox-gedrimas/us-central1/app/mylinks`, {
 
   method: 'POST',
   headers: {
@@ -58,8 +58,8 @@ export const saveInintalUserState = (token, initialStateSave) => fetch(`http://l
 }).then(res => console.log('555555555555555555', res))
 
 export const saveUserChanges = (token, newUserState) => {
-  fetch(`http://localhost:5000/mylinkbox-gedrimas/us-central1/app/mylinks`, {
-  //fetch(`https://us-central1-mylinkbox-gedrimas.cloudfunctions.net/app/mylinks`, {
+  //fetch(`http://localhost:5000/mylinkbox-gedrimas/us-central1/app/mylinks`, {
+  fetch(`https://us-central1-mylinkbox-gedrimas.cloudfunctions.net/app/mylinks`, {
 
     method: 'POST',
     headers: {
@@ -70,8 +70,8 @@ export const saveUserChanges = (token, newUserState) => {
   }).then(res => console.log(res))
 }
 
-//const getUserToken = paramsToGetToken => fetch(`https://us-central1-mylinkbox-gedrimas.cloudfunctions.net/app/sign_in`, {
-const getUserToken = paramsToGetToken => fetch(`http://localhost:5000/mylinkbox-gedrimas/us-central1/app/sign_in`, {
+const getUserToken = paramsToGetToken => fetch(`https://us-central1-mylinkbox-gedrimas.cloudfunctions.net/app/sign_in`, {
+//const getUserToken = paramsToGetToken => fetch(`http://localhost:5000/mylinkbox-gedrimas/us-central1/app/sign_in`, {
 
   method: 'POST',
   headers: {
@@ -80,8 +80,8 @@ const getUserToken = paramsToGetToken => fetch(`http://localhost:5000/mylinkbox-
   body: qs.stringify(paramsToGetToken),
 }).then(res => res.json())
 
-const getUserData = (token, name) => fetch(`http://localhost:5000/mylinkbox-gedrimas/us-central1/app/mylinks/?name=${name}`, {
-//const getUserData = (token, name) => fetch(`https://us-central1-mylinkbox-gedrimas.cloudfunctions.net/app/mylinks/?name=${name}`, {
+//const getUserData = (token, name) => fetch(`http://localhost:5000/mylinkbox-gedrimas/us-central1/app/mylinks/?name=${name}`, {
+const getUserData = (token, name) => fetch(`https://us-central1-mylinkbox-gedrimas.cloudfunctions.net/app/mylinks/?name=${name}`, {
 
   method: 'GET',
   headers: {
@@ -98,8 +98,8 @@ export function registration({ regName, regPass }) {
       password: regPass,
     }
 
-    //const userRegistration = () => fetch(`https://us-central1-mylinkbox-gedrimas.cloudfunctions.net/app/register`, {
-    const userRegistration = () => fetch(`http://localhost:5000/mylinkbox-gedrimas/us-central1/app/register`, {
+    const userRegistration = () => fetch(`https://us-central1-mylinkbox-gedrimas.cloudfunctions.net/app/register`, {
+    //const userRegistration = () => fetch(`http://localhost:5000/mylinkbox-gedrimas/us-central1/app/register`, {
 
       method: 'POST',
       headers: {
