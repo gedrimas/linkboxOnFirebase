@@ -88,20 +88,24 @@ exports.create = async function(req, res) {
       //     }
       //   }
       // });
-   
+
+      function passChecker(password, hash_password) {
+        return bcrypt.compareSync(password, hash_password);
+      }
         try {
-            const document = db.collection('users').doc('/' + req.params.name + '/');
-            let name = await document.get();
-            let response = name.data();
-            console.log('RESPONSE - - - - ', response)
+            const document = db.collection('users').doc('/' + req.body.name + '/');
+            let item = await document.get();
+            let response = item.data();
+            if(passChecker(req.body.password, response.hash_password)){
+              return res.json({token: jwt.sign({ name: response }, 'RESTFULAPIs')});
+            }
+            res.status(401).json({ message: 'Authentication failed. Wrong password.' }); 
             //return res.status(200).send(response);
-            return res.json({token: jwt.sign({ name: response }, 'RESTFULAPIs')});
         } catch (error) {
             console.log(error);
             return res.status(500).send(error);
         }
     
-
     };
     
     exports.loginRequired = async function(req, res, next) {
@@ -118,12 +122,9 @@ exports.create = async function(req, res) {
       //     res.send(err);
       //   res.json(user);
       // });
-      console.log('req = ', req.query.name)
+
       try {
         const document = db.collection('users').doc('/' + req.query.name + '/');
-
-
-
         let item = await document.get();
         let response = item.data();
         return res.status(200).send(response);

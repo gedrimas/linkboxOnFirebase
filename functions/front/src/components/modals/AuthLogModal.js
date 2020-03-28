@@ -59,7 +59,7 @@ export default function AuthLogModal(props) {
   const [regPass, setRegPass] = useState('')
   const [logName, setLogName] = useState('')
   const [logPass, setLogPass] = useState('')
-  const [action, setAction] = useState('first')
+  const [action, setAction] = useState('second')
   const [logButtonText, setLogButtonText] = useState('Sign in')
   const [isFetchData, setFetchData] = useState(true)
   const [wornMessage, setWornMessage] = useState('')
@@ -177,7 +177,7 @@ export default function AuthLogModal(props) {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+            <Tab.Container id="left-tabs-example" defaultActiveKey="second">
               <Row>
                 <Col sm={3}>
                   <Nav variant="pills" className="flex-column">
